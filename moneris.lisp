@@ -91,7 +91,7 @@
 			  :message message
 			  :raw-xml body
 			  :s-xml response)
-		   (values response code message))))
+		   (values response code message body))))
       (close stream))))
 
 #| 
