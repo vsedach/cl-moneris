@@ -9,7 +9,7 @@
 		    :api-token "yesguy"
 		    :order-id (moneris::gen-order-id)
 		    :cust-id "thecustomer"
-		    :amount "100.00"
+		    :amount "10.00"
 		    :pan pan
 		    :expdate "1010"))
 
