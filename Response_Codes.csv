@@ -1,0 +1,160 @@
+0,"Approved, account balances included"
+1,"Approved, account balances not included"
+2,"Approved, country club"
+3,"Approved, maybe more ID"
+4,"Approved, pending ID (sign paper draft)"
+5,"Approved, blind"
+6,"Approved, VIP"
+7,"Approved, administrative transaction"
+8,"Approved, national NEG file hit OK"
+9,"Approved, commercial"
+23,Amex - credit approval
+24,Amex 77 - credit approval
+25,Amex - credit approval 
+26,Amex - credit approval 
+27,Credit card approval
+28,VIP Credit Approved
+29,Credit Response Acknowledgement
+50,Decline
+51,Expired Card
+52,PIN retries exceeded
+53,No sharing
+54,No security module
+55,Invalid transaction
+56,No Support
+57,Lost or stolen card
+58,Invalid status
+59,Restricted Card
+60,No Chequing account
+60,No Savings account
+61,No PBF
+62,PBF update error
+63,Invalid authorization type
+64,Bad Track 2
+65,Adjustment not allowed
+66,Invalid credit card advance increment
+67,Invalid transaction date
+68,PTLF error
+69,Bad message error
+70,No IDF
+71,Invalid route authorization
+72,Card on National NEG file 
+73,Invalid route service (destination)
+74,Unable to authorize
+75,Invalid PAN length
+76,Low funds
+77,Pre-auth full
+78,Duplicate transaction
+79,Maximum online refund reached
+80,Maximum offline refund reached
+81,Maximum credit per refund reached
+82,Number of times used exceeded
+83,Maximum refund credit reached
+84,Duplicate transaction - authorization number has already been corrected by host. 
+85,Inquiry not allowed
+86,Over floor limit 
+87,Maximum number of refund credit by retailer
+88,Place call 
+89,CAF status inactive or closed
+90,Referral file full
+91,NEG file problem
+92,Advance less than minimum
+93,Delinquent
+94,Over table limit
+95,Amount over maximum
+96,PIN required
+97,Mod 10 check failure
+98,Force Post
+99,Bad PBF
+100,Unable to process transaction
+101,Place call
+102,
+103,NEG file problem
+104,CAF problem
+105,Card not supported
+106,Amount over maximum
+107,Over daily limit
+108,CAF Problem
+109,Advance less than minimum
+110,Number of times used exceeded
+111,Delinquent
+112,Over table limit
+113,Timeout
+115,PTLF error
+121,Administration file problem
+122,Unable to validate PIN: security module down
+150,Merchant not on file
+200,Invalid account
+201,Incorrect PIN
+202,Advance less than minimum
+203,Administrative card needed
+204,Amount over maximum 
+205,Invalid Advance amount
+206,CAF not found
+207,Invalid transaction date
+208,Invalid expiration date
+209,Invalid transaction code
+210,PIN key sync error
+212,Destination not available              
+251,Error on cash amount
+252,Debit not supported
+426,AMEX - Denial 12
+427,AMEX - Invalid merchant
+429,AMEX - Account error
+430,AMEX - Expired card
+431,AMEX - Call Amex
+434,AMEX - Call 03
+435,AMEX - System down
+436,AMEX - Call 05
+437,AMEX - Declined
+438,AMEX - Declined
+439,AMEX - Service error
+440,AMEX - Call Amex
+441,AMEX - Amount error
+475,CREDIT CARD - Invalid expiration date
+476,"CREDIT CARD - Invalid transaction, rejected"
+477,CREDIT CARD - Refer Call
+478,"CREDIT CARD - Decline, Pick up card, Call"
+479,"CREDIT CARD - Decline, Pick up card"
+480,"CREDIT CARD - Decline, Pick up card"
+481,CREDIT CARD - Decline
+482,CREDIT CARD - Expired Card
+483,CREDIT CARD - Refer
+484,CREDIT CARD - Expired card - refer
+485,CREDIT CARD - Not authorized
+486,CREDIT CARD - CVV Cryptographic error
+487,CREDIT CARD - Invalid CVV
+489,CREDIT CARD - Invalid CVV
+490,CREDIT CARD - Invalid CVV
+800,Bad format
+801,Bad data
+802,Invalid Clerk ID
+809,Bad close 
+810,System timeout
+811,System error
+821,Bad response length
+877,Invalid PIN block
+878,PIN length error
+880,Final packet of a multi-packet transaction
+881,Intermediate packet of a multi-packet transaction
+889,MAC key sync error
+898,Bad MAC value
+899,Bad sequence number - resend transaction
+900,Capture - PIN Tries Exceeded
+901,Capture - Expired Card
+902,Capture - NEG Capture
+903,Capture - CAF Status 3
+904,Capture - Advance < Minimum
+905,Capture - Num Times Used
+906,Capture - Delinquent
+907,Capture - Over Limit Table
+908,Capture - Amount Over Maximum
+909,Capture - Capture
+960,Initialization failure - merchant number mismatch
+961,Initialization failure -pinpad  mismatch
+963,No match on Poll code
+964,No match on Concentrator ID
+965,Invalid software version number
+966,Duplicate terminal name
+
+,
