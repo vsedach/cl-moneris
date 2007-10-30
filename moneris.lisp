@@ -91,7 +91,7 @@
 			  :message message
 			  :raw-xml body
 			  :s-xml response)
-		   (values response code message body))))
+		   (values response code message (second (assoc :transid (cdr response))) body))))
       (close stream))))
 
 #| 
