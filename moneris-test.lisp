@@ -2,12 +2,12 @@
 
 ;; Light testing functions
 
-(defun test-purchase (&key (pan "4242424242424242"))
+(defun test-purchase (&key (pan "4242424242424242") (order-id (moneris::gen-order-id)))
   (process-purchase "https://esqa.moneris.com/gateway2/servlet/MpgRequest"
 		    "demouser" "password"
 		    :store-id "store1"
 		    :api-token "yesguy"
-		    :order-id (moneris::gen-order-id)
+		    :order-id order-id
 		    :cust-id "thecustomer"
 		    :amount "10.00"
 		    :pan pan
