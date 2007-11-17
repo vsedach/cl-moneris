@@ -1,17 +1,19 @@
 (in-package :moneris-test)
 
-;; Light testing functions
+(defparameter *test-store*
+  (make-instance 'merchant-token
+                 :moneris-uri "https://esqa.moneris.com/gateway2/servlet/MpgRequest"
+                 :api-token "yesguy"
+                 :login "demouser"
+                 :password "password"
+                 :store-id "store1"))
 
-(defun test-purchase (&key (pan "4242424242424242") (order-id (moneris::gen-order-id)))
-  (process-purchase "https://esqa.moneris.com/gateway2/servlet/MpgRequest"
-		    "demouser" "password"
-		    :store-id "store1"
-		    :api-token "yesguy"
-		    :order-id order-id
-		    :cust-id "thecustomer"
-		    :amount "10.00"
-		    :pan pan
-		    :expdate "1010"))
+(defun test-purchase (&key (pan "4242424242424242") (order-id (gen-order-id)))
+  (process *test-store* (purchase :order-id order-id
+                                  :cust-id "thecustomer"
+                                  :amount "10.00"
+                                  :pan pan
+                                  :expdate "1010")))
 
 (defun test-purchase-catching-error (&key (pan "42424242424241"))
   (handler-case
@@ -22,12 +24,8 @@
 	      (moneris:raw-xml c)))))
 
 (defun test-correction (order-id txn-number)
-  (process-purchase-correction "https://esqa.moneris.com/gateway2/servlet/MpgRequest"
-			       "demouser" "password"
-			       :store-id "store1"
-			       :api-token "yesguy"
-			       :order-id order-id
-			       :txn-number txn-number))
+  (process *test-store* (correction :order-id order-id
+                                    :txn-number txn-number)))
 
 (defun test-purchase-then-correction ()
   (let* ((receipt (test-purchase))
@@ -37,13 +35,9 @@
     (format t "Made Purchase --~%   ~S~%Corrected ---~%  ~S" receipt correction)))
 
 (defun test-refund (order-id amount txn-number)
-  (process-refund "https://esqa.moneris.com/gateway2/servlet/MpgRequest"
-		  "demouser" "password"
-		  :store-id "store1"
-		  :api-token "yesguy"
-		  :order-id order-id
-		  :amount amount
-		  :txn-number txn-number))
+  (process *test-store* (refund :order-id order-id
+                                :amount amount
+                                :txn-number txn-number)))
 
 (defun test-purchase-then-refund ()
   (let* ((receipt (test-purchase))
@@ -53,57 +47,14 @@
 	 (refund (test-refund order-id amount txn-number)))
     (format t "Made Purchase --~%   ~S~%Refund ---~%  ~S" receipt refund)))
   
-
-(defun test-error-invaliduri ()
-  (print "Invalid URI Path Test -------")
-  (handler-case
-      (process-purchase "https://esqa.moneris.com/gateway3/servlet/MpgRequest"
-			"demouser" "password"
-			:store-id "store1"
-			:api-token "yesguy"
-			:order-id (moneris::gen-order-id)
-			:cust-id "thecustomer"
-			:amount "100.00"
-			:pan "1010101010101010"
-			:expdate "1010")
-    (error (c) (describe c)))
-
-  (print "Invalid URI Hostname Test-------")
-  (handler-case
-      (process-purchase "https://esqa1.moneris.com/gateway2/servlet/MpgRequest"
-			"demouser" "password"
-			:store-id "store1"
-			:api-token "yesguy"
-			:order-id (moneris::gen-order-id)
-			:cust-id "thecustomer"
-			:amount "100.00"
-			:pan "1010101010101010"
-			:expdate "1010")
-    (error (c) (describe c)))
-
-  (print "Invalid URI Protocol Test-------")
-  (handler-case
-      (process-purchase "http://esqa1.moneris.com/gateway2/servlet/MpgRequest"
-			"demouser" "password"
-			:store-id "store1"
-			:api-token "yesguy"
-			:order-id (moneris::gen-order-id)
-			:cust-id "thecustomer"
-			:amount "100.00"
-			:pan "1010101010101010"
-			:expdate "1010")
-    (error (c) (describe c))))
-
 (defun test-error-invalidcard ()
   (handler-case
-      (process-purchase "https://esqa.moneris.com/gateway2/servlet/MpgRequest"
-			"demouser" "password"
-			:store-id "store1"
-			:api-token "yesguy"
-			:order-id (moneris::gen-order-id)
-			:cust-id "thecustomer"
-			:amount "100.00"
-			:pan "1010101010101010"
-			:expdate "1010")
+      (process *test-store* (purchase :order-id (gen-order-id)
+                                      :cust-id "thecustomer"
+                                      :amount "100.00"
+                                      :pan "1010101010101010"
+                                      :expdate "1010"))
     (error (c) (describe c))))
 
+(defun gen-order-id ()
+  (string (gensym (format nil "ORDER-~A-" (get-universal-time)))))
