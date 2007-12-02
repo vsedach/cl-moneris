@@ -4,8 +4,6 @@
   (make-instance 'merchant-token
                  :moneris-uri "https://esqa.moneris.com/gateway2/servlet/MpgRequest"
                  :api-token "yesguy"
-                 :login "demouser"
-                 :password "password"
                  :store-id "store1"))
 
 (defun test-purchase (&key (pan "4242424242424242") (order-id (gen-order-id)))

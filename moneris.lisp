@@ -50,17 +50,13 @@
 	  s-xml-response))
 
 (defclass merchant-token ()
-  ((moneris-uri :reader moneris-uri :initarg :moneris-uri :initform "https://esqa.moneris.com/gateway2/servlet/MpgRequest")
-   (api-token :reader api-token :initarg :api-token :initform "yesguy")
-   (login :reader login :initarg :login)
-   (password :reader password :initarg :password)
+  ((moneris-uri :reader moneris-uri :initarg :moneris-uri)
+   (api-token :reader api-token :initarg :api-token)
    (store-id :reader store-id :initarg :store-id)))
 
 (defun process (store-token sxml-request)
   "Post a HTTPS request to a Moneris server supporting the mpg protocol."
   (let ((uri (moneris-uri store-token))
-        (username (login store-token))
-        (password (password store-token))
         (xml-request (with-output-to-string (stream)
                        (s-xml:print-xml
                         `(:|request|
@@ -73,8 +69,7 @@
       (drakma:http-request uri
 			   :method :post
 			   :force-ssl t
-			   :content xml-request
-			   :basic-authorization (list username password))
+			   :content xml-request)
       (declare (ignore uri must-close))
       (unwind-protect
            (if (/= http-status-code 200)
@@ -135,8 +130,6 @@ with the Moneris mpg server.
    Parameters   Lisp Type Description
    --------------------------------------------------------------
    uri          string    Full URI of the Moneris Server e.g. "https://moneris.com/mpg"
-   username     string    HTTP basic authorization username
-   password     string    HTTP basic authorization
 
 
    Moneris DTD Types    Corresponding Lisp Argument
