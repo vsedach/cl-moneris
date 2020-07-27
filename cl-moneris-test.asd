@@ -9,4 +9,4 @@
             :serial t
             :components ((:file "package")
                          (:file "moneris-test"))))
-  :depends-on (:cl-moneris :eos))
+  :depends-on (:cl-moneris :fiveam))
